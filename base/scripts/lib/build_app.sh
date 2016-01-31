@@ -10,6 +10,9 @@ cd $COPIED_APP_PATH
 
 meteor build --directory $BUNDLE_DIR --server=http://localhost:3000
 
+npm i
+mv $COPIED_APP_PATH/node_modules $BUNDLE_DIR/bundle/programs/server/
+
 cd $BUNDLE_DIR/bundle/programs/server/
 npm i
 

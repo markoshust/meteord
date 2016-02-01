@@ -10,11 +10,16 @@ cd $COPIED_APP_PATH
 
 meteor build --directory $BUNDLE_DIR --server=http://localhost:3000
 
-npm i
-mv $COPIED_APP_PATH/node_modules $BUNDLE_DIR/bundle/programs/server/
-
 cd $BUNDLE_DIR/bundle/programs/server/
 npm i
+mv $BUNDLE_DIR/bundle/programs/server/node_modules $BUNDLE_DIR/bundle/
+
+cp $COPIED_APP_PATH/package.json $BUNDLE_DIR/bundle/
+cd $BUNDLE_DIR/bundle/
+npm i
+ln -s node_modules programs/server/node_modules
+ln -s node_modules programs/web.browser/node_modules
+ln -s node_modules programs/web.cordova/node_modules
 
 mv $BUNDLE_DIR/bundle /built_app
 
